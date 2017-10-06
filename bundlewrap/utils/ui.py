@@ -171,6 +171,7 @@ class IOManager(object):
         self._active = False
         self.debug_log_file = None
         self.debug_mode = False
+        self.bedug_mode = False
         self.jobs = []
         self.lock = Lock()
         self.progress = 0
@@ -415,6 +416,9 @@ class IOManager(object):
         self._write_current_job()
 
     def _write_current_job(self):
+        if self.bedug_mode:
+            self._status_line_present = False
+            return
         if self.jobs and TTY:
             line = "{} ".format(blue(self._spinner_character()))
             # must track line length manually as len() will count ANSI escape codes

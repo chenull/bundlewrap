@@ -57,6 +57,14 @@ def build_parser_bw():
         help=_("print debugging info"),
     )
     parser.add_argument(
+        "-b",
+        "--bedug",
+        action='store_true',
+        default=False,
+        dest='bedug',
+        help=_("disable spinner. useful when debugging using ipdb"),
+    )
+    parser.add_argument(
         "-r",
         "--repo-path",
         default=environ.get('BW_REPO_PATH', getcwd()),

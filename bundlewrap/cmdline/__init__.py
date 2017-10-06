@@ -108,6 +108,7 @@ def main(*args, **kwargs):
 
     path = abspath(pargs.repo_path)
     io.debug_mode = pargs.debug
+    io.bedug_mode = pargs.bedug
     io.activate()
     io.debug(_("invocation: {}").format(" ".join([force_text(arg) for arg in argv])))
 
